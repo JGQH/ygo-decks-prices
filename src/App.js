@@ -1,4 +1,10 @@
+import Uploader from './components/Uploader';
+import { useState } from 'react';
+
 const App = () => {
-  return <p>Hello! YuGiOh Decks Prices here!</p>
+  const [file, setFile] = useState(null);
+  return (<>
+    <Uploader file={file} setFile={setFile} />
+  </>);
 }
 export default App;

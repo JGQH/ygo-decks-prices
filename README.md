@@ -19,7 +19,6 @@ This project aims to remake my own Python project and turn it into a website, us
 \* *No images yet* \*
 
 ## To-Do
-- Create basic .ydk file upload
 - Visualization of .ydk file content
 - Connection to back-end for info of ids in .ydk file
 - Styling of content
