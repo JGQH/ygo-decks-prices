@@ -1,4 +1,4 @@
-const Uploader = ({file, setFile}) => {
+const Uploader = ({file, setFile, getData}) => {
     const onFileChange = evt => {
         const file = evt.target.files[0];
         if(file?.name.endsWith(".ydk")) {
@@ -17,7 +17,7 @@ const Uploader = ({file, setFile}) => {
             <input type="file" onChange={onFileChange} />
         </div>
         <div className="uploader-searcher">
-            <button disabled={!file}>Search Data</button>
+            <button disabled={!file} onClick={getData}>Search Data</button>
         </div>
     </div>)
 }
