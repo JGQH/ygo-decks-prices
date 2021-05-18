@@ -4,7 +4,7 @@ export const TableHeaders = ({titles}) => titles.map((title, index) => {
     return <td key={index} title={title}>{title}</td>
 })
 
-export const TableBody = ({id, name, quantity, priceInfo}) => {
+export const TableBody = ({id, name, quantity, priceInfo, dispatcher}) => {
     const sets = priceInfo.map(info => info["set"]);
     const rarities = priceInfo.map(info => info["rarity"]);
     const prices = priceInfo.map(info => info["prices"]);
@@ -14,9 +14,10 @@ export const TableBody = ({id, name, quantity, priceInfo}) => {
     const [finalPrice, setFinalPrice] = useState(0);
 
     useEffect(() => {
-        const final = Math.round(100 * quantity * prices[setIndex][priceIndex]) / 100;
+        const final = (quantity * prices[setIndex][priceIndex]);
         setFinalPrice(final);
-    }, [prices, quantity, setIndex, priceIndex]);
+        dispatcher(id, final);
+    }, [setIndex, priceIndex]);
 
     return (
     <tr>
@@ -33,11 +34,11 @@ export const TableBody = ({id, name, quantity, priceInfo}) => {
         <td>{rarities[setIndex]}</td>
         <td>
             <select value={priceIndex} onChange={e => setPriceIndex(e.target.value)}>
-                <option value={0}>Low {prices[setIndex][0]}</option>
-                <option value={1}>Average {prices[setIndex][1]}</option>
-                <option value={2}>High {prices[setIndex][2]}</option>
+                <option value={0}>Low - ${prices[setIndex][0].toFixed(2)}</option>
+                <option value={1}>Average - ${prices[setIndex][1].toFixed(2)}</option>
+                <option value={2}>High - ${prices[setIndex][2].toFixed(2)}</option>
             </select>
         </td>
-        <td>${finalPrice}</td>
+        <td>${finalPrice.toFixed(2)}</td>
     </tr>)
 }

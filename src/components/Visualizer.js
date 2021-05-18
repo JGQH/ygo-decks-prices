@@ -1,7 +1,19 @@
+import { useReducer, useCallback } from 'react';
 import { TableHeaders, TableBody } from './../aux/table';
+
+function Reducer(prices, action) {
+    const newPrices = {...prices}
+    newPrices[action.id] = action.price;
+    return newPrices;
+}
 
 const Visualizer = ({data}) => {
     const titles = ["ID", "Name", "Quantity", "Set", "Rarity", "Unit Price", "Total Price"];
+    const [prices, setter] = useReducer(Reducer, {});
+
+    const dispatcher = useCallback((id, price) => {
+        setter({"id":id, "price":price})
+    }, [])
 
     return (
     <table className="visualizer-content">
@@ -14,8 +26,12 @@ const Visualizer = ({data}) => {
             {Object.keys(data).map((id, index) => {
                 const info = data[id];
 
-                return <TableBody key={index} id={id} name={info["name"]} quantity={info["quantity"]} priceInfo={info["prices"]} />
+                return <TableBody key={index} id={id} name={info["name"]} quantity={info["quantity"]} priceInfo={info["prices"]} dispatcher={dispatcher} />
             })}
+            <tr>
+                <td colSpan={titles.length - 1}>TOTAL</td>
+                <td>${Object.keys(prices).map(id => prices[id]).reduce((p, c) => p + c, 0).toFixed(2)}</td>
+            </tr>
         </tbody>
     </table>)
 }
