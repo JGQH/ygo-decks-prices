@@ -29,8 +29,8 @@ const Visualizer = ({data}) => {
                 return <TableBody key={index} id={id} name={info["name"]} quantity={info["quantity"]} priceInfo={info["prices"]} dispatcher={dispatcher} />
             })}
             <tr>
-                <td colSpan={titles.length - 1}>TOTAL</td>
-                <td>${Object.keys(prices).map(id => prices[id]).reduce((p, c) => p + c, 0).toFixed(2)}</td>
+                <th colSpan={titles.length - 1}>TOTAL</th>
+                <th>${Object.keys(prices).map(id => prices[id]).reduce((p, c) => p + c, 0).toFixed(2)}</th>
             </tr>
         </tbody>
     </table>)

@@ -10,16 +10,30 @@
     }
 
     table {
+        border: 1px solid getColor(0);
         justify-self: center;
         align-self: center;
 
-        border-spacing: .75rem;
         select {
-            width: 100%;
+            min-width: 100%;
+            padding: .5rem;
+            border-radius: .5rem;
+            border: none;
+            color: getColor(1);
+            background-color: getColor(2);
         }
 
+
+        th {
+            background-color: getColor(0);
+        }
+        
         td {
             text-align: center;
+        }
+
+        th, td {
+            padding: .5rem; 
         }
     }
 }

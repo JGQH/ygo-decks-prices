@@ -1,6 +1,6 @@
 @use "sass:list";
 
-$colors: #272744, #494d7e, #8b6d9c, #c69fa5, #f2d3ab, #fbf5ef;
+$colors: #272744, #494d7e, #baa5ff, #fbf5ef;
 
 @function getColor($i) {
     @if($i >= 0) {

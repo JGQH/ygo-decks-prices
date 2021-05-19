@@ -11,6 +11,7 @@ body {
     height: 100vh;
 
     color: getColor(-1);
+    overflow: hidden;
 
     #ygo {
         
@@ -26,7 +27,7 @@ body {
 
         .visualizer-container {
             flex-grow: 1;
-            flex-shrink: 0;
+            overflow: auto;
             background-color: getColor(1);
         }
     }
