@@ -16,9 +16,7 @@ This project aims to remake my own Python project and turn it into a website, us
 -NodeJS v16.0.0
 
 ## Illustrations
-\* *No images yet* \*
+![screenshot](./readme/image.png)
 
 ## To-Do
-- Visualization of .ydk file content
-- Connection to back-end for info of ids in .ydk file
-- Styling of content
+- \* *Finished* \*
