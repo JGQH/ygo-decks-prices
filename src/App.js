@@ -38,7 +38,10 @@ const App = () => {
   }
 
   return (<>
-    <Uploader file={file} setFile={setFile} getData={getData} />
+    <div className="uploader-container">
+      <h1>YGO Decks Prices</h1>
+      <Uploader file={file} setFile={setFile} getData={getData} />
+    </div>
     <div className="visualizer-container">
       {fetcher.status === "IDLE" && <p>No info yet, try uploading a .ydk file!</p>}
       {fetcher.status === "LOADING" && <p>Loading ydk...</p>}

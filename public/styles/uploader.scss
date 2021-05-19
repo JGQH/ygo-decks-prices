@@ -1,7 +1,43 @@
+@use "./utilities" as *;
+
 .uploader-container {
     padding: 1rem;
+    text-align: center;
+
+    h1 {
+        text-shadow: 0 0 .2rem getColor(-2);
+    }
 
     input[type=file] {
         display: none;
+    }
+    
+    .uploader-title, .uploader-file, .uploader-searcher {
+        padding: .5rem;
+        display: inline-block;
+    }
+
+    .uploader-file button, .uploader-searcher button{
+        &:disabled {
+            cursor: no-drop;
+            color: getColor(1);
+            background-color: getColor(0);
+            border: 1px solid getColor(1);
+        }
+
+        &:hover {
+            outline-offset: 3px;
+        }
+        cursor: pointer;
+
+        color: getColor(-1);
+        background-color: getColor(1);
+        border: 1px solid getColor(1);
+
+        outline: 1px solid getColor(1);
+        outline-offset: -1px;
+        
+        transition: all 200ms;
+        padding: .5rem;
     }
 }

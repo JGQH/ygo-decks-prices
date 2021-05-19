@@ -12,7 +12,7 @@ const Uploader = ({file, setFile, getData}) => {
     }
 
     return (
-    <div className="uploader-container">
+    <>
         <div className="uploader-title">
             <p>Upload your YDK file</p>
         </div>
@@ -23,7 +23,7 @@ const Uploader = ({file, setFile, getData}) => {
         <div className="uploader-searcher">
             <button disabled={!file} onClick={getData}>Search Data</button>
         </div>
-    </div>)
+    </>)
 }
 
 export default Uploader
