@@ -1,0 +1,33 @@
+.uploader-container {
+  padding: 1rem;
+  text-align: center;
+}
+.uploader-container h1 {
+  text-shadow: 0 0 0.2rem #baa5ff;
+}
+.uploader-container input[type=file] {
+  display: none;
+}
+.uploader-container .uploader-title, .uploader-container .uploader-file, .uploader-container .uploader-searcher {
+  padding: 0.5rem;
+  display: inline-block;
+}
+.uploader-container .uploader-file button, .uploader-container .uploader-searcher button {
+  cursor: pointer;
+  color: #fbf5ef;
+  background-color: #494d7e;
+  border: 1px solid #494d7e;
+  outline: 1px solid #494d7e;
+  outline-offset: -1px;
+  transition: all 200ms;
+  padding: 0.5rem;
+}
+.uploader-container .uploader-file button:disabled, .uploader-container .uploader-searcher button:disabled {
+  cursor: no-drop;
+  color: #494d7e;
+  background-color: #272744;
+  border: 1px solid #494d7e;
+}
+.uploader-container .uploader-file button:hover, .uploader-container .uploader-searcher button:hover {
+  outline-offset: 3px;
+}/*# sourceMappingURL=uploader.css.map */

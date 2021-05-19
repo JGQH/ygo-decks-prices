@@ -1,0 +1,30 @@
+.visualizer-container {
+  display: grid;
+  padding: 1rem;
+  box-shadow: inset 0 2rem 2rem -2rem #272744;
+}
+.visualizer-container p {
+  text-align: center;
+}
+.visualizer-container table {
+  border: 1px solid #272744;
+  justify-self: center;
+  align-self: center;
+}
+.visualizer-container table select {
+  min-width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: #494d7e;
+  background-color: #baa5ff;
+}
+.visualizer-container table th {
+  background-color: #272744;
+}
+.visualizer-container table td {
+  text-align: center;
+}
+.visualizer-container table th, .visualizer-container table td {
+  padding: 0.5rem;
+}/*# sourceMappingURL=visualizer.css.map */
