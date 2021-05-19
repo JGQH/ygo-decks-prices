@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export const TableHeaders = ({titles}) => titles.map((title, index) => {
-    return <td key={index} title={title}>{title}</td>
+    return <th key={index} title={title}>{title}</th>
 })
 
 export const TableBody = ({id, name, quantity, priceInfo, dispatcher}) => {

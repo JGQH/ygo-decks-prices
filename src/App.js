@@ -39,10 +39,12 @@ const App = () => {
 
   return (<>
     <Uploader file={file} setFile={setFile} getData={getData} />
-    {fetcher.status === "IDLE" && <p>No info yet, try uploading a .ydk file!</p>}
-    {fetcher.status === "LOADING" && <p>Loading ydk...</p>}
-    {fetcher.status === "ERROR" && <p>Sorry, an error ocurred. Try again!</p>}
-    {fetcher.status === "FINISHED" && <Visualizer data={fetcher.value["data"]} />}
+    <div className="visualizer-container">
+      {fetcher.status === "IDLE" && <p>No info yet, try uploading a .ydk file!</p>}
+      {fetcher.status === "LOADING" && <p>Loading ydk...</p>}
+      {fetcher.status === "ERROR" && <p>Sorry, an error ocurred. Try again!</p>}
+      {fetcher.status === "FINISHED" && <Visualizer data={fetcher.value["data"]} />}
+    </div>
   </>);
 }
 export default App;

@@ -1,0 +1,25 @@
+@use "./utilities" as *;
+
+.visualizer-container {
+    display: grid;
+    padding: 1rem;
+    box-shadow: inset 0 2rem 2rem -2rem getColor(0);
+
+    p {
+        text-align: center;
+    }
+
+    table {
+        justify-self: center;
+        align-self: center;
+
+        border-spacing: .75rem;
+        select {
+            width: 100%;
+        }
+
+        td {
+            text-align: center;
+        }
+    }
+}
