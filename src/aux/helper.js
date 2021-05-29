@@ -21,6 +21,10 @@ export async function getText(ydk_file) {
  * @returns {Array<String>}
  */
 export function getArray(ydk_text) {
-    const lines = ydk_text.split("\r\n");
-    return lines.filter(line => line.match(/^[0-9]{8}$/g));
+    const lines = ydk_text.split(/\s/g);
+    const valid = lines.filter(line => line.match(/^[0-9]{8}$/g));
+
+    if((valid.length === 0) || (valid.length > 90)) throw new Error("YdkError: Deck has an invalid amount of cards.");
+
+    return valid;
 }

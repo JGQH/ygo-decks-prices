@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Uploader from './components/Uploader';
 import { getText, getArray } from './aux/helper'
 import { useState, useReducer } from 'react';
@@ -5,7 +6,8 @@ import Visualizer from './components/Visualizer';
 
 function Reducer(_, action) {
   switch (action.status) {
-      case 'LOADING':
+      case 'DOWNLOADING':
+      case 'UPLOADING':
       case 'ERROR':
       case 'FINISHED':
           return action;
@@ -21,19 +23,28 @@ const App = () => {
   async function getData() {
     try {
       const ydk = await getText(file);
-      const ids = JSON.stringify({
-        data:getArray(ydk)
-      });
+      const ids = { data:getArray(ydk) };
 
-      dispatch({status:"LOADING", value:null});
+      dispatch({status:"UPLOADING", value:0});
 
-      const response = await fetch(`${process.env.REACT_APP_BACK_END}/process_ydk`, {method:'POST', headers:{'Content-Type':'application/json'}, body:ids});
-      const data = await response.json();
+      const request = await axios.post(`${process.env.REACT_APP_BACK_END}/process_ydk`, ids, {
+        headers: {'Content-Type':'application/json'},
+        onUploadProgress: evt => {
+          const pCompleted = Math.floor(100 * evt.loaded / evt.total);
+          dispatch({status:"UPLOADING", value:pCompleted})
+        },
+        onDownloadProgress: evt => {
+          const pCompleted = Math.floor(100 * evt.loaded / evt.total);
+          dispatch({status:"DOWNLOADING", value:pCompleted})
+        }
+      })
+
+      const data = request.data["data"];
 
       dispatch({status:"FINISHED", value:data});
     } catch(error) {
       console.log(error);
-      dispatch({status:"ERROR"})
+      dispatch({status:"ERROR", value:error.toString()})
     }
   }
 
@@ -44,9 +55,10 @@ const App = () => {
     </div>
     <div className="visualizer-container">
       {fetcher.status === "IDLE" && <p>No info yet, try uploading a .ydk file!</p>}
-      {fetcher.status === "LOADING" && <p>Loading ydk...</p>}
-      {fetcher.status === "ERROR" && <p>Sorry, an error ocurred. Try again!</p>}
-      {fetcher.status === "FINISHED" && <Visualizer data={fetcher.value["data"]} />}
+      {fetcher.status === "UPLOADING" && <p>Uploading ydk ({fetcher.value}%)...</p>}
+      {fetcher.status === "DOWNLOADING" && <p>Downloading prices ({fetcher.value}%)...</p>}
+      {fetcher.status === "ERROR" && <p>Sorry, an error ocurred. Try again! (<i>{fetcher.value}</i>)</p>}
+      {fetcher.status === "FINISHED" && <Visualizer data={fetcher.value} />}
     </div>
   </>);
 }
