@@ -1,7 +1,9 @@
 import { useState, useRef } from 'react';
+import { toPng } from 'html-to-image';
+import download from 'downloadjs';
 
 const Uploader = props => {
-    const { getYdkPrice, isShowing } = props;
+    const { getYdkPrice, isShowing, refTable } = props;
 
     const [file, setFile] = useState(null);
     const input = useRef(null);
@@ -12,6 +14,15 @@ const Uploader = props => {
             setFile(uploaded);
         }else{
             setFile(null);
+        }
+    }
+
+    const onTableScreenshot = async () => {
+        try {
+            const dataUrl = await toPng(refTable.current);
+            download(dataUrl, "YDK Prices");
+        } catch (error) {
+            alert(error.toString());
         }
     }
 
@@ -28,7 +39,7 @@ const Uploader = props => {
             <button disabled={!file} onClick={() => getYdkPrice(file)}>Search Data</button>
         </div>
         <div className="uploader-capture">
-            <button disabled={!isShowing}>Capture Table</button>
+            <button disabled={!isShowing} onClick={onTableScreenshot}>Capture Table</button>
         </div>
     </>)
 }

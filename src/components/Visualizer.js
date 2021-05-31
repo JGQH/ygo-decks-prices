@@ -7,7 +7,7 @@ function Reducer(prices, action) {
     return newPrices;
 }
 
-const Visualizer = ({data}) => {
+const Visualizer = ({reference, data}) => {
     const titles = ["ID", "Name", "Quantity", "Set", "Rarity", "Unit Price", "Total Price"];
     const [prices, setter] = useReducer(Reducer, {});
 
@@ -16,7 +16,7 @@ const Visualizer = ({data}) => {
     }, [])
 
     return (
-    <table className="visualizer-content">
+    <table className="visualizer-content" ref={reference}>
         <thead>
             <tr>
                 <TableHeaders titles={titles} />

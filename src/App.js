@@ -1,10 +1,12 @@
 import axios from 'axios';
+import { useRef } from 'react'
 import { getText, getArray } from './aux/helper'
 import { useHandler } from './aux/hooks'
 import Uploader from './components/Uploader';
 import Visualizer from './components/Visualizer';
 
 const App = () => {
+  const table = useRef(null);
   const [fetcher, dispatch] = useHandler();
 
   async function getYdkPrice(file) {
@@ -38,14 +40,14 @@ const App = () => {
   return (<>
     <div className="uploader-container">
       <h1>YGO Decks Prices</h1>
-      <Uploader getYdkPrice={getYdkPrice} isShowing={fetcher.status === "FINISHED"} />
+      <Uploader getYdkPrice={getYdkPrice} isShowing={fetcher.status === "FINISHED"} refTable={table} />
     </div>
     <div className="visualizer-container">
       {fetcher.status === "IDLE" && <p>No info yet, try uploading a .ydk file!</p>}
       {fetcher.status === "UPLOADING" && <p>Uploading ydk ({fetcher.value}%)...</p>}
       {fetcher.status === "DOWNLOADING" && <p>Downloading prices ({fetcher.value}%)...</p>}
       {fetcher.status === "ERROR" && <p>Sorry, an error ocurred. Try again! (<i>{fetcher.value}</i>)</p>}
-      {fetcher.status === "FINISHED" && <Visualizer data={fetcher.value} />}
+      {fetcher.status === "FINISHED" && <Visualizer reference={table} data={fetcher.value} />}
     </div>
   </>);
 }
