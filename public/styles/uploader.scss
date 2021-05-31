@@ -12,12 +12,12 @@
         display: none;
     }
     
-    .uploader-title, .uploader-file, .uploader-searcher {
+    .uploader-title, .uploader-file, .uploader-searcher, .uploader-capture {
         padding: .5rem;
         display: inline-block;
     }
 
-    .uploader-file button, .uploader-searcher button{
+    .uploader-file button, .uploader-searcher button, .uploader-capture button{
         &:disabled {
             cursor: no-drop;
             color: getColor(1);

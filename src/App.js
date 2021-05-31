@@ -1,57 +1,44 @@
 import axios from 'axios';
-import Uploader from './components/Uploader';
 import { getText, getArray } from './aux/helper'
-import { useState, useReducer } from 'react';
+import { useHandler } from './aux/hooks'
+import Uploader from './components/Uploader';
 import Visualizer from './components/Visualizer';
 
-function Reducer(_, action) {
-  switch (action.status) {
-      case 'DOWNLOADING':
-      case 'UPLOADING':
-      case 'ERROR':
-      case 'FINISHED':
-          return action;
-      default:
-          throw new Error("Unmatched status of fetching");
-  }
-}
-
 const App = () => {
-  const [file, setFile] = useState(null);
-  const [fetcher, dispatch] = useReducer(Reducer, {status:"IDLE"});
+  const [fetcher, dispatch] = useHandler();
 
-  async function getData() {
+  async function getYdkPrice(file) {
     try {
       const ydk = await getText(file);
       const ids = { data:getArray(ydk) };
 
-      dispatch({status:"UPLOADING", value:0});
+      dispatch("UPLOADING", 0);
 
       const request = await axios.post(`${process.env.REACT_APP_BACK_END}/process_ydk`, ids, {
         headers: {'Content-Type':'application/json'},
         onUploadProgress: evt => {
           const pCompleted = Math.floor(100 * evt.loaded / evt.total);
-          dispatch({status:"UPLOADING", value:pCompleted})
+          dispatch("UPLOADING", pCompleted)
         },
         onDownloadProgress: evt => {
           const pCompleted = Math.floor(100 * evt.loaded / evt.total);
-          dispatch({status:"DOWNLOADING", value:pCompleted})
+          dispatch("DOWNLOADING", pCompleted)
         }
       })
 
       const data = request.data["data"];
 
-      dispatch({status:"FINISHED", value:data});
+      dispatch("FINISHED", data);
     } catch(error) {
       console.log(error);
-      dispatch({status:"ERROR", value:error.toString()})
+      dispatch("ERROR", error.toString());
     }
   }
 
   return (<>
     <div className="uploader-container">
       <h1>YGO Decks Prices</h1>
-      <Uploader file={file} setFile={setFile} getData={getData} />
+      <Uploader getYdkPrice={getYdkPrice} isShowing={fetcher.status === "FINISHED"} />
     </div>
     <div className="visualizer-container">
       {fetcher.status === "IDLE" && <p>No info yet, try uploading a .ydk file!</p>}
