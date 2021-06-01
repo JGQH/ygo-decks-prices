@@ -12,14 +12,6 @@
   justify-self: center;
   align-self: center;
 }
-.visualizer-container table select {
-  min-width: 100%;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: none;
-  color: #494d7e;
-  background-color: #baa5ff;
-}
 .visualizer-container table th {
   background-color: #272744;
 }

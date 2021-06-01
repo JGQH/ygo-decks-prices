@@ -1,0 +1,67 @@
+@use "./utilities" as *;
+
+.table-select {
+    position: relative;
+
+    .table-visual {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .table-selected {
+            text-align: left;
+            padding-right: .5em;
+            flex: 1 0;
+        }
+        .table-toggler {
+            cursor: pointer;
+            padding: .5em;
+            flex: 0 1;
+            border-radius: .5em;
+
+            transition: all .5s;
+            &:hover {
+                background-color: getColor(0);
+            }
+        }
+    }
+
+    .table-selector {
+        position: absolute;
+        border: 1px solid getColor(0);
+
+        width: 100%;
+        padding: .25em;
+
+        transition: all .25s;
+        z-index: 100;
+
+        &.table-invisible {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        &.table-visible {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+
+        .table-option {
+            cursor: pointer;
+            padding: .25em;
+            background-color: getColor(0);
+
+            transition: all .25s;
+            &:hover {
+                color: getColor(0);
+                background-color: getColor(2);
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid getColor(1);
+            }
+        }
+    }
+}

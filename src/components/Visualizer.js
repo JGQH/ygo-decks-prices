@@ -26,7 +26,14 @@ const Visualizer = ({reference, data}) => {
             {Object.keys(data).map((id, index) => {
                 const info = data[id];
 
-                return <TableBody key={index} id={id} name={info["name"]} quantity={info["quantity"]} priceInfo={info["prices"]} dispatcher={dispatcher} />
+                const name = info["name"];
+                const quantity = info["quantity"];
+
+                const sets = info["prices"].map(detail => detail["set"]);
+                const rarities = info["prices"].map(info => info["rarity"]);
+                const prices = info["prices"].map(info => info["prices"]);
+
+                return <TableBody key={index} {...{id, name, quantity, sets, rarities, prices, dispatcher}} />
             })}
             <tr>
                 <th colSpan={titles.length - 1}>TOTAL</th>

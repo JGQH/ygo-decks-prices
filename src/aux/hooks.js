@@ -1,5 +1,15 @@
 import { useState, useReducer } from 'react';
 
+export const useToggle = (initialValue) => {
+    const [toggle, setToggle] = useState(initialValue);
+
+    const doToggle = () => {
+        setToggle(!toggle);
+    }
+
+    return [toggle, doToggle];
+}
+
 /* Reducer */
 function setReducer(_, action) {
     switch (action.status) {
