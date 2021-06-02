@@ -15,11 +15,14 @@
   cursor: pointer;
   padding: 0.5em;
   flex: 0 1;
+  border: 1px solid #fbf5ef;
   border-radius: 0.5em;
   transition: all 0.5s;
 }
 .table-select .table-visual .table-toggler:hover {
-  background-color: #272744;
+  color: #494d7e;
+  border-color: #fbf5ef;
+  background-color: #fbf5ef;
 }
 .table-select .table-selector {
   position: absolute;
@@ -42,6 +45,7 @@
 .table-select .table-selector .table-option {
   cursor: pointer;
   padding: 0.25em;
+  font-size: 0.9em;
   background-color: #272744;
   transition: all 0.25s;
 }

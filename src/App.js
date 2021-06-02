@@ -28,12 +28,15 @@ const App = () => {
         }
       })
 
-      const data = request.data["data"];
+      if(request.data["error"]) {
+        throw new Error(request.data["error"]);
+      }
 
+      const data = request.data["data"];
       dispatch("FINISHED", data);
     } catch(error) {
       console.log(error);
-      dispatch("ERROR", error.toString());
+      dispatch("ERROR", error.message);
     }
   }
 
