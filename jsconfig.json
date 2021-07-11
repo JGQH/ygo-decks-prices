@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "@Components/*":[
+                "components/Uploader/*",
+                "components/Visualizer/*",
+                "components/Table/*",
+                "components/Select/*"
+            ],
+            "@Library/*":[
+                "lib/home/*"
+            ],
+            "@Hooks/*":[
+                "lib/hooks/*"
+            ],
+            "@Root":[
+                "pages/index"
+            ]
+        }
+    }
+}
