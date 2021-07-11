@@ -14,21 +14,8 @@ body {
     overflow: hidden;
 
     #__next {
-        
         height: 100%;
         display: flex;
         flex-flow: column;
-
-        .uploader-container {
-            flex-grow: 0;
-            flex-shrink: 1;
-            background-color: getColor(0);
-        }
-
-        .visualizer-container {
-            flex-grow: 1;
-            overflow: auto;
-            background-color: getColor(1);
-        }
     }
 }

@@ -34,7 +34,6 @@ export async function fetchPrices(file, dispatch) {
         })
 
         const data = request.data['data'];
-        console.log(data)
         
         if(request.status !== 200) {
             throw new Error(data);

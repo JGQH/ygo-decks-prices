@@ -1,19 +1,20 @@
 @use "./utilities" as *;
 
-.table-select {
+.select {
     position: relative;
 
-    .table-visual {
+    .selectVisual {
         display: flex;
         flex-direction: row;
         align-items: center;
 
-        .table-selected {
+        .selectChosen {
             text-align: left;
             padding-right: .5em;
             flex: 1 0;
         }
-        .table-toggler {
+
+        .selectToggler {
             cursor: pointer;
             padding: .5em;
             flex: 0 1;
@@ -29,7 +30,7 @@
         }
     }
 
-    .table-selector {
+    .selectOptions {
         position: absolute;
         border: 1px solid getColor(0);
 
@@ -39,19 +40,19 @@
         transition: all .25s;
         z-index: 100;
 
-        &.table-invisible {
+        &.Invisible {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
         }
 
-        &.table-visible {
+        &.Visible {
             opacity: 1;
             visibility: visible;
             pointer-events: all;
         }
 
-        .table-option {
+        .selectOption {
             cursor: pointer;
             padding: .25em;
             font-size: .9em;

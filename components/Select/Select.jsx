@@ -1,4 +1,5 @@
 import useToggle from '@Hooks/useToggle'
+import styles from './select.module.scss'
 
 export default function Select({ options, value, onChange }) {
     const [isVisible, toggleVisibility] = useToggle()
@@ -9,18 +10,18 @@ export default function Select({ options, value, onChange }) {
     }
 
     return (
-    <div className='table-select'>
-        <div className='table-visual'>
-            <div className='table-selected'>
+    <div className={styles.select}>
+        <div className={styles.selectVisual}>
+            <div className={styles.selectChosen}>
                 {options[value]}
             </div>
-            <div className='table-toggler' onClick={toggleVisibility}>
+            <div className={styles.selectToggler} onClick={toggleVisibility}>
                 {isVisible ? '▲' : '▼'}
             </div>
         </div>
-        <div className={`table-selector table-${isVisible ? 'visible' : 'invisible'}`}>
+        <div className={`${styles.selectOptions} ${isVisible ? styles.Visible : styles.Invisible}`}>
             {options.map((option, i) => (
-                <div key={i} className='table-option' onClick={() => doChange(i)}>
+                <div key={i} className={styles.selectOption} onClick={() => doChange(i)}>
                     {(i === value) ? <b>{option}</b> : option}
                 </div>
             ))}

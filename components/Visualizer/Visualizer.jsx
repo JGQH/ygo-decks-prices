@@ -2,6 +2,7 @@ import { useYdk } from '@Root'
 import usePricer from '@Hooks/usePricer'
 import TableHeaders from '@Components/TableHeaders'
 import TableBody from '@Components/TableBody'
+import styles from './visualizer.module.scss'
 
 const TITLES = ["ID", "Name", "Quantity", "Set", "Rarity", "Unit Price", "Total Price"]
 
@@ -10,7 +11,7 @@ function PriceTable() {
     const [priceTotal, dispatcher] = usePricer()
 
     return (
-    <table className='visualizer-content' ref={table}>
+    <table ref={table}>
         <thead>
             <tr>
                 <TableHeaders titles={TITLES} />
@@ -41,7 +42,7 @@ export default function Visualizer() {
     const { fetcher } = useYdk()
 
     return (
-    <div className="visualizer-container">
+    <div className={styles.visualizerContainer}>
         {fetcher?.status === "IDLE" && <p>No info yet, try uploading a .ydk file!</p>}
         {fetcher?.status === "UPLOADING" && <p>Uploading ydk ({fetcher.value}%)...</p>}
         {fetcher?.status === "DOWNLOADING" && <p>Downloading prices ({fetcher.value}%)...</p>}

@@ -1,6 +1,10 @@
 @use "./utilities" as *;
 
-.uploader-container {
+.uploaderContainer {
+    flex-grow: 0;
+    flex-shrink: 1;
+    background-color: getColor(0);
+    
     padding: 1rem;
     text-align: center;
 
@@ -12,12 +16,12 @@
         display: none;
     }
     
-    .uploader-title, .uploader-file, .uploader-searcher, .uploader-capture {
+    .uploaderTitle, .uploaderFile, .uploaderSearcher, .uploaderCapture {
         padding: .5rem;
         display: inline-block;
     }
 
-    .uploader-file button, .uploader-searcher button, .uploader-capture button{
+    .uploaderFile button, .uploaderSearcher button, .uploaderCapture button{
         &:disabled {
             cursor: no-drop;
             color: getColor(1);
