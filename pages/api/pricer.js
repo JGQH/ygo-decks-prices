@@ -12,10 +12,11 @@ export default async (req, res) => {
             headers: {'Content-Type':'application/json'}
         })
 
-        if(request.data['error']) throw new Error(request.data['error'])
+        if(request.data['data']) throw new Error(request.data['data'])
 
         res.status(200).json({
-            data: request.data['data']
+            ydk: request.data['ydk'],
+            errors: request.data['errors'] || []
         })
     } catch (error) {
         res.status(400).json({

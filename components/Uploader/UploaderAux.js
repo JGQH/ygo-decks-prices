@@ -33,12 +33,18 @@ export async function fetchPrices(file, dispatch) {
             }
         })
 
-        const data = request.data['data'];
+        const data = request.data;
         
         if(request.status !== 200) {
-            throw new Error(data);
+            throw new Error(data['data']);
         }
-        dispatch('FINISHED', data);
+
+        if(data['errors'].length > 0) {
+            const errors = data['errors'].map(msg => `- ${msg}`)
+            alert('Errors found in ydk:\n' + errors.join("\n"))
+        }
+
+        dispatch('FINISHED', data['ydk']);
     } catch (error) {
         dispatch('ERROR', error.message);
     }
