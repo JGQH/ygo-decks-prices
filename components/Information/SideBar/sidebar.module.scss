@@ -1,0 +1,27 @@
+@use "./utilities" as *;
+
+.sideBar {
+    &Shown {
+        transform: translate(0);
+        box-shadow: 0 0 1rem 1rem getColor(0);
+    }
+
+    &Hidden {
+        transform: translate(100%);
+    }
+
+    &Shown, &Hidden {
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        width: 100vw;
+        height: 100vh;
+        @media (orientation: landscape) {
+            width: 25vw;
+        }
+
+        transition: all .5s ease-in-out;
+        background: getColor(1);
+    }
+}

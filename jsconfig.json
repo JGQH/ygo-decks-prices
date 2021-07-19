@@ -6,7 +6,9 @@
                 "components/Uploader/*",
                 "components/Visualizer/*",
                 "components/Table/*",
-                "components/Select/*"
+                "components/Select/*",
+                "components/Information/Displayer/*",
+                "components/Information/SideBar/*"
             ],
             "@Library/*":[
                 "lib/home/*"

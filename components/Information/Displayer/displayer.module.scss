@@ -1,0 +1,17 @@
+@use "./utilities" as *;
+
+.displayerContainer {
+    cursor: pointer;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    z-index: 100;
+    
+    img {
+        width: 2em;
+        height: 2em;
+        border-radius: 50%;
+        background: getColor(0);
+        box-shadow: 0 0 .25em .25em getColor(0);
+    }
+}
