@@ -14,8 +14,15 @@ export function useYdk() {
 
 export default function Home() {
     const table = useRef(null)
-    const [fetcher, dispatch] = useHandler()
-    const [info, display] = useToggle()
+    const [fetcher, setFetcher] = useHandler()
+    const [info, display] = useToggle(false)
+
+    function dispatch(status, value) {
+        setFetcher(status, value)
+        if(status === 'FINISHED' && !info) { //To display the side bar if there are errors
+            display()
+        }
+    }
 
     return (
     <YdkContext.Provider value={{fetcher, dispatch, info, display, table}}>

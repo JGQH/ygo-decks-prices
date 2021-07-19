@@ -39,12 +39,7 @@ export async function fetchPrices(file, dispatch) {
             throw new Error(data['data']);
         }
 
-        if(data['errors'].length > 0) {
-            const errors = data['errors'].map(msg => `- ${msg}`)
-            alert('Errors found in ydk:\n' + errors.join("\n"))
-        }
-
-        dispatch('FINISHED', data['ydk']);
+        dispatch('FINISHED', data);
     } catch (error) {
         dispatch('ERROR', error.message);
     }

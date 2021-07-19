@@ -20,6 +20,4 @@ Back-End connects to other APIs for pricing individual cards, as well as a Mongo
 ![screenshot](./readme/image.png)
 
 ## To-Do
-- *About* section
-- Refactor showing errors due to invalid card IDs
 - Ydk tester (Since this project is in [portfolio](https://jgqh.github.io), it needs a test without a file)

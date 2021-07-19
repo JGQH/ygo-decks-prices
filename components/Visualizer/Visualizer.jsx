@@ -8,6 +8,8 @@ const TITLES = ["ID", "Name", "Quantity", "Set", "Rarity", "Unit Price", "Total 
 
 function PriceTable() {
     const { fetcher, table } = useYdk()
+
+    const ydk = fetcher.value['ydk']
     const [priceTotal, dispatcher] = usePricer()
 
     return (
@@ -18,8 +20,8 @@ function PriceTable() {
             </tr>
         </thead>
         <tbody>
-            {Object.keys(fetcher.value).map((id, index) => {
-                const info = fetcher.value[id];
+            {Object.keys(ydk).map((id, index) => {
+                const info = ydk[id];
 
                 const name = info['name']
                 const quantity = info['quantity']

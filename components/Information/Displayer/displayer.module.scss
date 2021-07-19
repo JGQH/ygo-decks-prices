@@ -3,15 +3,25 @@
 .displayerContainer {
     cursor: pointer;
     position: absolute;
-    right: 1em;
-    top: 1em;
+    right: 1rem;
+    top: 1rem;
     z-index: 100;
     
     img {
-        width: 2em;
-        height: 2em;
+        width: 2rem;
+        height: 2rem;
         border-radius: 50%;
         background: getColor(0);
         box-shadow: 0 0 .25em .25em getColor(0);
+    }
+
+    @media (orientation: portrait) {
+        right: .5rem;
+        top: .5rem;
+
+        img {
+            width: 2rem;
+            height: 2rem;
+        }
     }
 }
