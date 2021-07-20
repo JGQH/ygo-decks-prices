@@ -19,8 +19,9 @@ export default function Home() {
 
     function dispatch(status, value) {
         setFetcher(status, value)
-        if(status === 'FINISHED' && !info) { //To display the side bar if there are errors
-            display()
+        
+        if(status === 'FINISHED') {
+            display(true) //To display the error section in the sidebar
         }
     }
 

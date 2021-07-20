@@ -5,7 +5,7 @@ export default function Displayer() {
     const { display } = useYdk()
 
     return (
-    <div className={styles.displayerContainer} onClick={display}>
+    <div className={styles.displayerContainer} onClick={() => display()}>
         <img src='/displayer.svg' alt='Information' />
     </div>)
 }
