@@ -1,4 +1,5 @@
 import { useYdk } from '@Root'
+import Image from 'next/image'
 import styles from './displayer.module.scss'
 
 export default function Displayer() {
@@ -6,6 +7,6 @@ export default function Displayer() {
 
     return (
     <div className={styles.displayerContainer} onClick={() => display()}>
-        <img src='/displayer.svg' alt='Information' />
+        <Image src='/displayer.svg' alt='Information' />
     </div>)
 }
