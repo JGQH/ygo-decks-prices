@@ -6,9 +6,9 @@ export default async (req, res) => {
     try {
         if(req.method !== 'POST') throw new Error('Not supported method')
 
-        const data = req.body
+        const data = validateData(req.body['data'])
 
-        const request = await axios.post(BACKEND, data, {
+        const request = await axios.post(BACKEND, { data }, {
             headers: {'Content-Type':'application/json'}
         })
 
@@ -23,4 +23,12 @@ export default async (req, res) => {
             data: error.message
         })
     }  
+}
+
+function validateData(data) {
+    const newData = data.filter(line => line.match(/^[0-9]{6,8}$/g))
+
+    if((newData.length === 0) || (newData.length > 90)) throw new Error("YdkError: Deck has an invalid amount of cards.")
+
+    return newData
 }
