@@ -15,7 +15,7 @@ export default function Select({ options, value, onChange }) {
             <div className={styles.selectChosen}>
                 {options[value]}
             </div>
-            <div className={styles.selectToggler} onClick={toggleVisibility}>
+            <div className={styles.selectToggler} onClick={() => toggleVisibility()}>
                 {isVisible ? '▲' : '▼'}
             </div>
         </div>
