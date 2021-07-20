@@ -1,10 +1,11 @@
+import React, { useContext, useRef } from 'react'
 import Uploader from '@Components/Uploader'
 import Visualizer from '@Components/Visualizer'
 import Displayer from '@Components/Displayer'
 import SideBar from '@Components/SideBar'
+import Header from '@Components/Header'
 import useHandler from '@Hooks/useHandler'
 import useToggle from '@Hooks/useToggle'
-import React, { useContext, useRef } from 'react'
 
 const YdkContext = React.createContext()
 
@@ -27,6 +28,7 @@ export default function Home() {
 
     return (
     <YdkContext.Provider value={{fetcher, dispatch, info, display, table}}>
+        <Header />
         <Uploader />
         <Visualizer />
         <Displayer />

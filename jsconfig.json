@@ -8,7 +8,8 @@
                 "components/Table/*",
                 "components/Select/*",
                 "components/Information/Displayer/*",
-                "components/Information/SideBar/*"
+                "components/Information/SideBar/*",
+                "components/Header/*"
             ],
             "@Library/*":[
                 "lib/home/*"
