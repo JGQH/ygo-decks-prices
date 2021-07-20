@@ -7,7 +7,7 @@
     top: 1rem;
     z-index: 100;
     
-    img {
+    & > * {
         width: 2rem;
         height: 2rem;
         border-radius: 50%;
@@ -18,10 +18,5 @@
     @media (orientation: portrait) {
         right: .5rem;
         top: .5rem;
-
-        img {
-            width: 2rem;
-            height: 2rem;
-        }
     }
 }

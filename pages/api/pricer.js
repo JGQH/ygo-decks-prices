@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const BACKEND = process.env.YGO_BACKEND
 
-export default async (req, res) => {
+const pricer = async (req, res) => {
     try {
         if(req.method !== 'POST') throw new Error('Not supported method')
 
@@ -32,3 +32,5 @@ function validateData(data) {
 
     return newData
 }
+
+export default pricer

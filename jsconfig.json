@@ -19,6 +19,9 @@
             ],
             "@Root":[
                 "pages/index"
+            ],
+            "@Public/*":[
+                "public/*"
             ]
         }
     }
