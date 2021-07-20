@@ -36,8 +36,16 @@
                 background-color: getColor(0);
             }
 
-            &Content p {
-                margin: 1rem;
+            &Content {
+                p {
+                    margin: 1rem;
+                }
+
+                span {
+                    cursor: pointer;
+                    border-radius: 1em;
+                    background-color: getColor(0);
+                }
             }
         }
     }
