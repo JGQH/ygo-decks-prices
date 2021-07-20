@@ -8,6 +8,6 @@ export default function Displayer() {
 
     return (
     <div className={styles.displayerContainer} onClick={() => display()}>
-        <Image src={icon} alt='Information' />
+        <Image src={icon} alt='Information'/>
     </div>)
 }
